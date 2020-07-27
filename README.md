@@ -1,37 +1,38 @@
 # spring5-webflux
 
 #### 介绍
+
 Webflux是 Spring5 添加新的用于 web 开发的模块，功能和 SpringMVC 类似，基于响应式编程出现的框架
+<br/>
+SpringMVC是基于 Servlet 容器，Webflux 是一种异步非阻塞的框架，异步非阻塞的框架在 Servlet3.1 以后才支持，核心是基于 Reactor 的相关 API 实现的
 
-#### 软件架构
-软件架构说明
+#### 异步非阻塞
 
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+异步和同步针对调用者，调用者发送请求，如果等着对方回应之后才去做其他事情就是同步，如果发送请求之后不等着对方回应就去做其他事情就是异步；
+<br/>
+阻塞和非阻塞针对被调用者，被调用者收到请求之后，做完请求任务之后才给出反馈就是阻塞，收到请求之后马上给出反馈然后再去做事情就是非阻塞
 
 
-#### 码云特技
+#### Webflux的特点
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+1. 非阻塞式:在有限资源下，提高系统吞吐量和伸缩性，以 Reactor 为基础实现响应式编程 
+2. 函数式编程:Spring5 框架基于 java8，Webflux 使用 Java8 函数式编程方式实现路由请求
+
+
+#### 与Spring MVC的比较
+
+1.  两个框架都可以使用注解方式，都运行在 Tomcat 等容器中
+2.  SpringMVC 采用命令式编程，Webflux 采用异步响应式编程
+
+#### 响应式编程
+
+1. 响应式编程是一种面向数据流和变化传播的编程范式。这意味着可以在编程语言中很方便的表达静态或动态的数据流，而相关的计算模型会自动将变化的值通过数据流进行传播。
+   <br/>
+   电子表格程序就是响应式编程的一个例子。单元格可以包含字面值或类似"=B1+C1"的公式，而包含公式的单元格的值会依据其他单元格的值的变化而变化。
+2. 响应式编程操作中，Reactor 是满足 Reactive 规范框架
+3. Reactor 有两个核心类，Mono 和 Flux，这两个类实现接口 Publisher。
+   <br/>Flux 返回 N 个元素
+   <br/>Mono 返回 0 或者 1 个元素
+4. Flux 和 Mono 都是数据流的发布者，使用 Flux 和 Mono 都可以发出三种数据信号: 元素值，错误信号，完成信号。
+   <br/>
+   错误信号和完成信号都代表终止信号，终止信号用于告诉订阅者数据流结束了，错误信号终止数据流同时把错误信息传递给订阅者
