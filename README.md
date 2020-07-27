@@ -20,6 +20,7 @@ SpringMVC是基于 Servlet 容器，Webflux 是一种异步非阻塞的框架，
 
 
 #### 与Spring MVC的比较
+![Spring MVC or WebFlux](https://images.gitee.com/uploads/images/2020/0727/114901_16100f09_7531595.jpeg "SpringMVCorWebFlux.jpg")
 
 1.  两个框架都可以使用注解方式，都运行在 Tomcat 等容器中
 2.  SpringMVC 采用命令式编程，Webflux 采用异步响应式编程
